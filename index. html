@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAMmix | Building on Trust</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* --- IDENTITY VARIABLES --- */
+        :root {
+            --brand-blue: #1B4876;
+            --brand-orange: #E86A26;
+            --brand-black: #111111;
+            --brand-grey: #f4f4f4;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+
+        /* --- GLOBAL RESET --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Roboto', sans-serif; color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
+        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; }
+        a { text-decoration: none; transition: 0.3s; }
+        ul { list-style: none; }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 1.5rem 5%; background: #fff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo img { height: 60px; } /* Adjust based on your crop */
+        .nav-links { display: flex; gap: 2rem; }
+        .nav-links a { color: var(--brand-blue); font-weight: 700; font-size: 0.9rem; }
+        .nav-links a:hover { color: var(--brand-orange); }
+        .btn-quote {
+            padding: 0.8rem 2rem; background: var(--brand-orange); color: #fff;
+            font-weight: 700; border-radius: 50px; text-transform: uppercase; font-size: 0.8rem;
+        }
+        .btn-quote:hover { background: var(--brand-black); transform: translateY(-2px); }
+
+        /* --- HERO SECTION --- */
+        header {
+            height: 90vh;
+            background: linear-gradient(rgba(27, 72, 118, 0.85), rgba(27, 72, 118, 0.6)), url('assets/images/hero-industrial.jpg');
+            background-size: cover; background-position: center; background-attachment: fixed;
+            display: flex; align-items: center; position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Angled bottom to match the 'M' */
+        }
+        .hero-content { width: 85%; margin: 0 auto; color: #fff; }
+        .hero-tagline { color: var(--brand-orange); font-weight: 700; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        header h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
+        header h1 span { color: var(--brand-orange); }
+        header p { font-size: 1.2rem; max-width: 600px; margin-bottom: 2.5rem; opacity: 0.9; }
+        .btn-hero {
+            padding: 1rem 2.5rem; background: #fff; color: var(--brand-blue);
+            font-weight: 800; font-family: 'Montserrat'; text-transform: uppercase;
+            display: inline-block; border-radius: 4px;
+        }
+        .btn-hero:hover { background: var(--brand-orange); color: #fff; }
+
+        /* --- TRUST BAR --- */
+        .trust-bar {
+            padding: 4rem 10%; background: #fff; display: flex; justify-content: space-around;
+            text-align: center; transform: translateY(-30px);
+        }
+        .stat h3 { font-size: 3rem; color: var(--brand-blue); margin-bottom: 0.5rem; }
+        .stat p { font-weight: 700; color: var(--brand-black); font-size: 0.9rem; }
+
+        /* --- ABOUT (THE ORBIT) --- */
+        .about-section { padding: 5rem 10%; display: flex; gap: 4rem; align-items: center; }
+        .about-img { flex: 1; position: relative; }
+        .about-img img { width: 100%; border-radius: 10px; box-shadow: 20px 20px 0px var(--brand-orange); }
+        .about-text { flex: 1; }
+        .section-tag { color: var(--brand-orange); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        .about-text h2 { font-size: 2.5rem; color: var(--brand-blue); margin: 1rem 0; }
+        .about-text p { margin-bottom: 1.5rem; color: #555; }
+        .checklist li { margin-bottom: 10px; font-weight: 500; display: flex; align-items: center; }
+        .checklist li::before { content: "✓"; color: var(--brand-orange); font-weight: 900; margin-right: 10px; }
+
+        /* --- SERVICES (THE MIX) --- */
+        .services { background: var(--brand-grey); padding: 6rem 10%; position: relative; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem auto; }
+        .section-header h2 { font-size: 2.5rem; color: var(--brand-blue); }
+        
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .service-card {
+            background: #fff; padding: 3rem 2rem; border-bottom: 4px solid transparent;
+            transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        .service-card:hover { border-bottom: 4px solid var(--brand-orange); transform: translateY(-10px); }
+        .icon-box {
+            width: 60px; height: 60px; background: rgba(232, 106, 38, 0.1);
+            color: var(--brand-orange); display: flex; justify-content: center; align-items: center;
+            border-radius: 50%; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: bold;
+        }
+        .service-card h3 { margin-bottom: 1rem; color: var(--brand-blue); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--brand-blue); color: #fff; padding: 5rem 10% 2rem 10%; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+        .footer-brand h2 { color: #fff; margin-bottom: 1rem; }
+        .footer-brand p { opacity: 0.7; max-width: 300px; }
+        .footer-col h4 { color: var(--brand-orange); margin-bottom: 1.5rem; font-size: 1.1rem; }
+        .footer-col ul li { margin-bottom: 0.8rem; }
+        .footer-col ul li a { color: #fff; opacity: 0.8; }
+        .footer-col ul li a:hover { color: var(--brand-orange); opacity: 1; }
+        
+        .footer-bottom { 
+            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; 
+            text-align: center; font-size: 0.9rem; opacity: 0.6; 
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.8rem; }
+            .about-section { flex-direction: column; }
+            .trust-bar { flex-direction: column; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="assets/images/logo-full-color.png" alt="DAMmix Logo">
+        </div>
+        <div class="nav-links">
+            <a href="#">Home</a>
+            <a href="#">Our Vision</a>
+            <a href="#">Solutions</a>
+            <a href="#">Projects</a>
+        </div>
+        <a href="#" class="btn-quote">Get a Quote</a>
+    </nav>
+
+    <header>
+        <div class="hero-content">
+            <span class="hero-tagline">BUILDING ON TRUST</span>
+            <h1>ENGINEERING THE <br> FUTURE OF <span>EXCELLENCE</span></h1>
+            <p>DAMmix delivers world-class industrial solutions with a foundation of integrity. We don't just supply; we partner in your progress.</p>
+            <a href="#" class="btn-hero">Explore Our Work</a>
+        </div>
+    </header>
+
+    <div class="trust-bar">
+        <div class="stat">
+            <h3>15+</h3>
+            <p>Years of Trust</p>
+        </div>
+        <div class="stat">
+            <h3>100%</h3>
+            <p>Quality Guarantee</p>
+        </div>
+        <div class="stat">
+            <h3>250+</h3>
+            <p>Projects Delivered</p>
+        </div>
+    </div>
+
+    <section class="about-section">
+        <div class="about-img">
+            <img src="assets/images/about-construction.jpg" alt="Construction Site">
+        </div>
+        <div class="about-text">
+            <span class="section-tag">Who We Are</span>
+            <h2>We Mix Precision With Passion</h2>
+            <p>At DAMmix, our logo represents our philosophy. The interlaced 'D' and 'M' signify the seamless integration of our services into your operations. The swoosh represents our commitment to propelling your projects forward.</p>
+            <ul class="checklist">
+                <li>Certified Industrial Standards</li>
+                <li>Advanced Logistics Network</li>
+                <li>Unwavering Safety Protocols</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="section-header">
+            <h2>Our Core Capabilities</h2>
+            <p>Leveraging advanced engineering and supply chain mastery to deliver results.</p>
+        </div>
+        <div class="service-grid">
+            <div class="service-card">
+                <div class="icon-box">D</div>
+                <h3>Development & Supply</h3>
+                <p>High-grade materials sourced and delivered with precision timing to keep your timeline on track.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box">A</div>
+                <h3>Advanced Logistics</h3>
+                <p>A fleet and network designed to move heavy industry solutions across borders and terrains.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon-box">M</div>
+                <h3>Management Systems</h3>
+                <p>Integrated project oversight ensuring that 'Trust' isn't just a word, but a metric we track.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h2>DAMmix</h2>
+                <p>Building on Trust. Delivering Excellence.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">News</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="#">info@dammix.com</a></li>
+                    <li><a href="#">+1 234 567 890</a></li>
+                    <li><a href="#">Addis Ababa, Ethiopia</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 DAMmix International. All Rights Reserved.
+        </div>
+    </footer>
+
+</body>
+</html>
