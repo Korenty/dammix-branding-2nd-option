@@ -3,228 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAMmix | Building on Trust</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>DAMmix | Identity Option 2 Showcase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Space+Mono&display=swap" rel="stylesheet">
     <style>
-        /* --- IDENTITY VARIABLES --- */
         :root {
-            --brand-blue: #1B4876;
-            --brand-orange: #E86A26;
-            --brand-black: #111111;
-            --brand-grey: #f4f4f4;
-            --text-dark: #333;
-            --text-light: #fff;
+            --primary-blue: #1B4876;
+            --primary-orange: #E86A26;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent-grey: #64748b;
         }
 
-        /* --- GLOBAL RESET --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Roboto', sans-serif; color: var(--text-dark); line-height: 1.6; overflow-x: hidden; }
-        h1, h2, h3, h4 { font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: -0.5px; }
-        a { text-decoration: none; transition: 0.3s; }
-        ul { list-style: none; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background-color: var(--light); 
+            color: var(--dark);
+            line-height: 1.6;
+        }
 
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.5rem 5%; background: #fff;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            position: sticky; top: 0; z-index: 1000;
+        /* --- PRESENTATION HEADER --- */
+        .spec-header {
+            padding: 80px 10%;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
         }
-        .logo img { height: 60px; } /* Adjust based on your crop */
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { color: var(--brand-blue); font-weight: 700; font-size: 0.9rem; }
-        .nav-links a:hover { color: var(--brand-orange); }
-        .btn-quote {
-            padding: 0.8rem 2rem; background: var(--brand-orange); color: #fff;
-            font-weight: 700; border-radius: 50px; text-transform: uppercase; font-size: 0.8rem;
+        .version-tag {
+            font-family: 'Space Mono', monospace;
+            background: var(--primary-blue);
+            color: white;
+            padding: 4px 12px;
+            font-size: 0.8rem;
+            border-radius: 4px;
         }
-        .btn-quote:hover { background: var(--brand-black); transform: translateY(-2px); }
+        h1 { font-size: 3.5rem; font-weight: 900; margin: 20px 0; letter-spacing: -2px; }
+        .concept-meta { font-family: 'Space Mono', monospace; color: var(--accent-grey); }
 
-        /* --- HERO SECTION --- */
-        header {
-            height: 90vh;
-            background: linear-gradient(rgba(27, 72, 118, 0.85), rgba(27, 72, 118, 0.6)), url('assets/images/hero-industrial.jpg');
-            background-size: cover; background-position: center; background-attachment: fixed;
-            display: flex; align-items: center; position: relative;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); /* Angled bottom to match the 'M' */
+        /* --- LOGO DISPLAY --- */
+        .logo-display {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            align-items: center;
         }
-        .hero-content { width: 85%; margin: 0 auto; color: #fff; }
-        .hero-tagline { color: var(--brand-orange); font-weight: 700; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
-        header h1 { font-size: 4.5rem; line-height: 1.1; margin-bottom: 1.5rem; }
-        header h1 span { color: var(--brand-orange); }
-        header p { font-size: 1.2rem; max-width: 600px; margin-bottom: 2.5rem; opacity: 0.9; }
-        .btn-hero {
-            padding: 1rem 2.5rem; background: #fff; color: var(--brand-blue);
-            font-weight: 800; font-family: 'Montserrat'; text-transform: uppercase;
-            display: inline-block; border-radius: 4px;
+        .main-logo-card {
+            background: white;
+            padding: 80px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        .btn-hero:hover { background: var(--brand-orange); color: #fff; }
+        .main-logo-card img { max-width: 100%; height: auto; }
 
-        /* --- TRUST BAR --- */
-        .trust-bar {
-            padding: 4rem 10%; background: #fff; display: flex; justify-content: space-around;
-            text-align: center; transform: translateY(-30px);
+        /* --- TYPOGRAPHY & COLOR SYSTEM --- */
+        .specs-grid {
+            padding: 60px 10%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
         }
-        .stat h3 { font-size: 3rem; color: var(--brand-blue); margin-bottom: 0.5rem; }
-        .stat p { font-weight: 700; color: var(--brand-black); font-size: 0.9rem; }
+        .spec-box {
+            background: #fff;
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid #e2e8f0;
+        }
+        .label {
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--accent-grey);
+            display: block;
+            margin-bottom: 20px;
+        }
 
-        /* --- ABOUT (THE ORBIT) --- */
-        .about-section { padding: 5rem 10%; display: flex; gap: 4rem; align-items: center; }
-        .about-img { flex: 1; position: relative; }
-        .about-img img { width: 100%; border-radius: 10px; box-shadow: 20px 20px 0px var(--brand-orange); }
-        .about-text { flex: 1; }
-        .section-tag { color: var(--brand-orange); font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
-        .about-text h2 { font-size: 2.5rem; color: var(--brand-blue); margin: 1rem 0; }
-        .about-text p { margin-bottom: 1.5rem; color: #555; }
-        .checklist li { margin-bottom: 10px; font-weight: 500; display: flex; align-items: center; }
-        .checklist li::before { content: "✓"; color: var(--brand-orange); font-weight: 900; margin-right: 10px; }
+        /* Color Swatches */
+        .swatch-group { display: flex; gap: 15px; }
+        .swatch {
+            width: 80px; height: 80px;
+            border-radius: 12px;
+            position: relative;
+        }
+        .s-blue { background: var(--primary-blue); }
+        .s-orange { background: var(--primary-orange); }
+        .s-dark { background: var(--dark); }
 
-        /* --- SERVICES (THE MIX) --- */
-        .services { background: var(--brand-grey); padding: 6rem 10%; position: relative; }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem auto; }
-        .section-header h2 { font-size: 2.5rem; color: var(--brand-blue); }
-        
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-        .service-card {
-            background: #fff; padding: 3rem 2rem; border-bottom: 4px solid transparent;
-            transition: 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        /* Typography */
+        .font-demo { font-size: 2rem; font-weight: 800; color: var(--primary-blue); }
+
+        /* --- LOGO VARIATIONS --- */
+        .variations {
+            padding: 100px 10%;
+            background: var(--dark);
+            color: white;
         }
-        .service-card:hover { border-bottom: 4px solid var(--brand-orange); transform: translateY(-10px); }
-        .icon-box {
-            width: 60px; height: 60px; background: rgba(232, 106, 38, 0.1);
-            color: var(--brand-orange); display: flex; justify-content: center; align-items: center;
-            border-radius: 50%; margin-bottom: 1.5rem; font-size: 1.5rem; font-weight: bold;
+        .variation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
         }
-        .service-card h3 { margin-bottom: 1rem; color: var(--brand-blue); }
+        .v-card {
+            background: rgba(255,255,255,0.05);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .v-card img { max-width: 150px; margin-bottom: 20px; filter: brightness(0) invert(1); }
 
         /* --- FOOTER --- */
-        footer { background: var(--brand-blue); color: #fff; padding: 5rem 10% 2rem 10%; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-        .footer-brand h2 { color: #fff; margin-bottom: 1rem; }
-        .footer-brand p { opacity: 0.7; max-width: 300px; }
-        .footer-col h4 { color: var(--brand-orange); margin-bottom: 1.5rem; font-size: 1.1rem; }
-        .footer-col ul li { margin-bottom: 0.8rem; }
-        .footer-col ul li a { color: #fff; opacity: 0.8; }
-        .footer-col ul li a:hover { color: var(--brand-orange); opacity: 1; }
-        
-        .footer-bottom { 
-            border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; 
-            text-align: center; font-size: 0.9rem; opacity: 0.6; 
-        }
-
-        /* --- RESPONSIVE --- */
-        @media (max-width: 768px) {
-            header h1 { font-size: 2.8rem; }
-            .about-section { flex-direction: column; }
-            .trust-bar { flex-direction: column; gap: 2rem; }
+        footer {
+            padding: 60px 10%;
+            text-align: center;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--accent-grey);
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">
-            <img src="assets/images/logo-full-color.png" alt="DAMmix Logo">
-        </div>
-        <div class="nav-links">
-            <a href="#">Home</a>
-            <a href="#">Our Vision</a>
-            <a href="#">Solutions</a>
-            <a href="#">Projects</a>
-        </div>
-        <a href="#" class="btn-quote">Get a Quote</a>
-    </nav>
-
-    <header>
-        <div class="hero-content">
-            <span class="hero-tagline">BUILDING ON TRUST</span>
-            <h1>ENGINEERING THE <br> FUTURE OF <span>EXCELLENCE</span></h1>
-            <p>DAMmix delivers world-class industrial solutions with a foundation of integrity. We don't just supply; we partner in your progress.</p>
-            <a href="#" class="btn-hero">Explore Our Work</a>
-        </div>
+    <header class="spec-header">
+        <span class="version-tag">IDENTITY OPTION 02</span>
+        <h1>Structural Synergy</h1>
+        <p class="concept-meta">CONCEPT: INTERLOCKING INTEGRITY // MOTION FOUNDATION</p>
     </header>
 
-    <div class="trust-bar">
-        <div class="stat">
-            <h3>15+</h3>
-            <p>Years of Trust</p>
+    <section class="logo-display">
+        <div class="main-logo-card">
+            <img src="assets/images/synergy-full.png" alt="DAMmix Synergy Primary Logo">
         </div>
-        <div class="stat">
-            <h3>100%</h3>
-            <p>Quality Guarantee</p>
-        </div>
-        <div class="stat">
-            <h3>250+</h3>
-            <p>Projects Delivered</p>
-        </div>
-    </div>
-
-    <section class="about-section">
-        <div class="about-img">
-            <img src="assets/images/about-construction.jpg" alt="Construction Site">
-        </div>
-        <div class="about-text">
-            <span class="section-tag">Who We Are</span>
-            <h2>We Mix Precision With Passion</h2>
-            <p>At DAMmix, our logo represents our philosophy. The interlaced 'D' and 'M' signify the seamless integration of our services into your operations. The swoosh represents our commitment to propelling your projects forward.</p>
-            <ul class="checklist">
-                <li>Certified Industrial Standards</li>
-                <li>Advanced Logistics Network</li>
-                <li>Unwavering Safety Protocols</li>
-            </ul>
+        <div class="logic-content">
+            <span class="label">Design Logic</span>
+            <p>The "Synergy" identity emphasizes <strong>Industrial Connectivity</strong>. The interlocking 'D' and 'M' signify a unified supply chain, while the orbital baseline represents a global foundation of trust.</p>
+            <br>
+            <p>The bold, sans-serif letterforms project authority and modern engineering standards.</p>
         </div>
     </section>
 
-    <section class="services">
-        <div class="section-header">
-            <h2>Our Core Capabilities</h2>
-            <p>Leveraging advanced engineering and supply chain mastery to deliver results.</p>
+    <div class="specs-grid">
+        <div class="spec-box">
+            <span class="label">Color Architecture</span>
+            <div class="swatch-group">
+                <div class="swatch s-blue"></div>
+                <div class="swatch s-orange"></div>
+                <div class="swatch s-dark"></div>
+            </div>
+            <div style="margin-top: 20px; font-family: 'Space Mono'; font-size: 0.8rem;">
+                <p>#1B4876 (Engineering Blue)</p>
+                <p>#E86A26 (Kinetic Orange)</p>
+            </div>
         </div>
-        <div class="service-grid">
-            <div class="service-card">
-                <div class="icon-box">D</div>
-                <h3>Development & Supply</h3>
-                <p>High-grade materials sourced and delivered with precision timing to keep your timeline on track.</p>
+
+        <div class="spec-box">
+            <span class="label">Core Typography</span>
+            <p class="font-demo">Montserrat Bold</p>
+            <p style="letter-spacing: 5px;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
+            <p style="margin-top: 10px; color: var(--accent-grey);">GEOMETRIC SANS-SERIF</p>
+        </div>
+    </div>
+
+    <section class="variations">
+        <span class="label" style="color: rgba(255,255,255,0.5);">Application Testing</span>
+        <div class="variation-grid">
+            <div class="v-card">
+                <img src="assets/images/synergy-icon.png" alt="Icon Only">
+                <p>Monogram Icon</p>
             </div>
-            <div class="service-card">
-                <div class="icon-box">A</div>
-                <h3>Advanced Logistics</h3>
-                <p>A fleet and network designed to move heavy industry solutions across borders and terrains.</p>
+            <div class="v-card">
+                <img src="assets/images/synergy-full.png" alt="Reversed">
+                <p>Negative/Reverse</p>
             </div>
-            <div class="service-card">
-                <div class="icon-box">M</div>
-                <h3>Management Systems</h3>
-                <p>Integrated project oversight ensuring that 'Trust' isn't just a word, but a metric we track.</p>
+            <div class="v-card">
+                <div style="height: 150px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.5rem;">
+                    DAMmix
+                </div>
+                <p>Wordmark Only</p>
             </div>
         </div>
     </section>
 
     <footer>
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h2>DAMmix</h2>
-                <p>Building on Trust. Delivering Excellence.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Company</h4>
-                <ul>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Careers</a></li>
-                    <li><a href="#">News</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Contact</h4>
-                <ul>
-                    <li><a href="#">info@dammix.com</a></li>
-                    <li><a href="#">+1 234 567 890</a></li>
-                    <li><a href="#">Addis Ababa, Ethiopia</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2026 DAMmix International. All Rights Reserved.
-        </div>
+        &copy; 2026 DAMMIX BRANDING DOCUMENTATION // OPTION 2: SYNERGY BUILDER
     </footer>
 
 </body>
