@@ -3,193 +3,566 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAMmix | Identity Option 2 Showcase</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=Space+Mono&display=swap" rel="stylesheet">
+    <title>DAMmix | The Science of Structure | Brand System 2.0</title>
+    <meta name="description" content="DAMmix: Molecular engineering for high-performance concrete. Visual Identity System Option 2.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Space+Grotesk:wght@300;500;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+
     <style>
+        /* --- 1. MOLECULAR DESIGN TOKENS --- */
         :root {
-            --primary-blue: #1B4876;
-            --primary-orange: #E86A26;
-            --dark: #0f172a;
-            --light: #f8fafc;
-            --accent-grey: #64748b;
+            /* Brand Colors: Extracted from Logo Option 2 */
+            --dam-carbon: #2D2D2D;       /* The Grey Cubes */
+            --dam-carbon-dark: #1a1a1a;
+            --dam-orange: #F36F21;       /* The Active Drop */
+            --dam-orange-glow: rgba(243, 111, 33, 0.4);
+            
+            /* Functional Palette */
+            --lab-white: #FFFFFF;
+            --lab-paper: #F8F9FA;
+            --tech-border: rgba(45, 45, 45, 0.1);
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            
+            /* Typography */
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            /* Dimensions */
+            --header-h: 90px;
+            --max-w: 1400px;
+            --radius-card: 12px;
         }
 
+        /* Dark Mode Override for "Expensive Tech" Feel */
+        body.dark-theme {
+            --lab-white: #121212;
+            --lab-paper: #1E1E1E;
+            --tech-border: rgba(255, 255, 255, 0.1);
+            --dam-carbon: #E0E0E0;
+            --glass-bg: rgba(30, 30, 30, 0.8);
+        }
+
+        /* --- 2. GLOBAL RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: var(--light); 
-            color: var(--dark);
+        
+        body {
+            background-color: var(--lab-white);
+            color: var(--dam-carbon-dark);
+            font-family: var(--font-body);
             line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease;
         }
 
-        /* --- PRESENTATION HEADER --- */
-        .spec-header {
-            padding: 80px 10%;
-            background: white;
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .version-tag {
-            font-family: 'Space Mono', monospace;
-            background: var(--primary-blue);
-            color: white;
-            padding: 4px 12px;
-            font-size: 0.8rem;
-            border-radius: 4px;
-        }
-        h1 { font-size: 3.5rem; font-weight: 900; margin: 20px 0; letter-spacing: -2px; }
-        .concept-meta { font-family: 'Space Mono', monospace; color: var(--accent-grey); }
-
-        /* --- LOGO DISPLAY --- */
-        .logo-display {
-            padding: 100px 10%;
-            display: grid;
-            grid-template-columns: 1.5fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-        .main-logo-card {
-            background: white;
-            padding: 80px;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .main-logo-card img { max-width: 100%; height: auto; }
-
-        /* --- TYPOGRAPHY & COLOR SYSTEM --- */
-        .specs-grid {
-            padding: 60px 10%;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-        }
-        .spec-box {
-            background: #fff;
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid #e2e8f0;
-        }
-        .label {
-            font-family: 'Space Mono', monospace;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            color: var(--accent-grey);
-            display: block;
-            margin-bottom: 20px;
+        h1, h2, h3, h4 { font-family: var(--font-head); line-height: 1.1; letter-spacing: -0.02em; }
+        
+        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; position: relative; z-index: 2; }
+        .section-pad { padding: 120px 0; }
+        
+        /* Utility: The "Orange Catalyst" Accent */
+        .catalyst-dot {
+            width: 8px; height: 8px; background: var(--dam-orange);
+            border-radius: 50%; display: inline-block; margin-right: 12px;
+            box-shadow: 0 0 10px var(--dam-orange-glow);
         }
 
-        /* Color Swatches */
-        .swatch-group { display: flex; gap: 15px; }
-        .swatch {
-            width: 80px; height: 80px;
-            border-radius: 12px;
-            position: relative;
+        /* --- 3. DYNAMIC BACKGROUND (CANVAS OVERLAY) --- */
+        #molecular-canvas {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0; opacity: 0.4; pointer-events: none;
         }
-        .s-blue { background: var(--primary-blue); }
-        .s-orange { background: var(--primary-orange); }
-        .s-dark { background: var(--dark); }
 
-        /* Typography */
-        .font-demo { font-size: 2rem; font-weight: 800; color: var(--primary-blue); }
+        /* --- 4. NAVIGATION --- */
+        header {
+            position: fixed; top: 0; width: 100%; height: var(--header-h);
+            z-index: 100; border-bottom: 1px solid var(--tech-border);
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
 
-        /* --- LOGO VARIATIONS --- */
-        .variations {
-            padding: 100px 10%;
-            background: var(--dark);
-            color: white;
+        nav { height: 100%; display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo-lockup { display: flex; align-items: center; gap: 15px; text-decoration: none; }
+        .logo-img { height: 55px; width: auto; } /* Placeholder for uploaded image */
+        
+        .nav-items { display: flex; gap: 40px; }
+        .nav-item {
+            font-family: var(--font-head); font-weight: 500; font-size: 0.9rem;
+            color: var(--dam-carbon-dark); text-decoration: none; position: relative;
         }
-        .variation-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
+        .nav-item::after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 2px;
+            background: var(--dam-orange); transition: width 0.3s ease;
         }
-        .v-card {
-            background: rgba(255,255,255,0.05);
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .v-card img { max-width: 150px; margin-bottom: 20px; filter: brightness(0) invert(1); }
+        .nav-item:hover::after { width: 100%; }
 
-        /* --- FOOTER --- */
-        footer {
-            padding: 60px 10%;
-            text-align: center;
-            font-family: 'Space Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--accent-grey);
+        /* --- 5. HERO: THE MOLECULAR REVEAL --- */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            position: relative; padding-top: var(--header-h);
+        }
+        
+        .hero-grid {
+            display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 60px; align-items: center;
+        }
+
+        .hero-tag {
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em;
+            color: var(--dam-orange); font-weight: 700; margin-bottom: 24px; display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 5vw, 5.5rem); margin-bottom: 30px;
+            color: var(--dam-carbon-dark);
+        }
+        
+        .hero h1 span { color: var(--dam-orange); }
+
+        .hero p {
+            font-size: 1.25rem; max-width: 600px; color: #555; margin-bottom: 40px;
+        }
+
+        .btn-group { display: flex; gap: 20px; }
+        
+        .btn {
+            padding: 16px 32px; border-radius: 4px; font-weight: 600; text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1); border: 1px solid transparent;
+            display: inline-flex; align-items: center; gap: 10px;
+        }
+        .btn-primary {
+            background: var(--dam-carbon-dark); color: white;
+        }
+        .btn-primary:hover {
+            background: var(--dam-orange); border-color: var(--dam-orange);
+            box-shadow: 0 10px 30px var(--dam-orange-glow);
+        }
+        .btn-secondary {
+            border-color: var(--tech-border); color: var(--dam-carbon-dark); background: white;
+        }
+        .btn-secondary:hover { background: var(--lab-paper); }
+
+        /* Isometric Cube Animation Placeholder */
+        .iso-visual {
+            position: relative; height: 600px; width: 100%;
+            background: radial-gradient(circle at center, rgba(243, 111, 33, 0.05) 0%, transparent 70%);
+            display: flex; justify-content: center; align-items: center;
+        }
+        .iso-img { width: 80%; filter: drop-shadow(0 20px 40px rgba(0,0,0,0.1)); animation: float 6s ease-in-out infinite; }
+
+        /* --- 6. LOGO DECONSTRUCTION (The Science) --- */
+        .logo-science { background: var(--lab-paper); border-top: 1px solid var(--tech-border); }
+        
+        .deconstruct-grid {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 30px; margin-top: 60px;
+        }
+
+        .science-card {
+            background: var(--lab-white); padding: 40px; border-radius: var(--radius-card);
+            border: 1px solid var(--tech-border); transition: transform 0.3s;
+        }
+        .science-card:hover { transform: translateY(-10px); border-color: var(--dam-orange); }
+        
+        .science-icon {
+            width: 60px; height: 60px; background: rgba(243, 111, 33, 0.1);
+            color: var(--dam-orange); display: flex; align-items: center; justify-content: center;
+            border-radius: 12px; margin-bottom: 24px;
+        }
+
+        /* --- 7. STRESS TEST LAB --- */
+        .stress-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+        }
+        
+        .stress-item {
+            position: relative; height: 350px; border-radius: var(--radius-card); overflow: hidden;
+            background: #000; group;
+        }
+        .stress-item img {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: 0.5s;
+        }
+        .stress-item:hover img { opacity: 0.4; scale: 1.05; }
+        
+        .stress-data {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 25px;
+            color: white; transform: translateY(20px); opacity: 0; transition: 0.4s;
+        }
+        .stress-item:hover .stress-data { transform: translateY(0); opacity: 1; }
+        
+        .score-ring {
+            width: 50px; height: 50px; border: 3px solid var(--dam-orange); border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-weight: bold; margin-bottom: 10px;
+        }
+
+        /* --- 8. COMPETITOR MATRIX (UPDATED) --- */
+        .matrix-table {
+            width: 100%; border-collapse: separate; border-spacing: 0 15px; margin-top: 40px;
+        }
+        .matrix-row { background: var(--lab-white); box-shadow: 0 5px 20px rgba(0,0,0,0.03); transition: 0.3s; }
+        .matrix-row:hover { transform: scale(1.01); }
+        .matrix-row td { padding: 25px; border-top: 1px solid var(--tech-border); border-bottom: 1px solid var(--tech-border); }
+        .matrix-row td:first-child { border-left: 1px solid var(--tech-border); border-radius: 12px 0 0 12px; }
+        .matrix-row td:last-child { border-right: 1px solid var(--tech-border); border-radius: 0 12px 12px 0; }
+        
+        .matrix-row.dam-active {
+            background: linear-gradient(90deg, #FFF 0%, rgba(243, 111, 33, 0.05) 100%);
+            border-left: 4px solid var(--dam-orange);
+        }
+        
+        /* --- 9. ANIMATIONS --- */
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
+        .fade-up { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1); }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+        /* Mobile Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero h1 { font-size: 3.5rem; }
+            .deconstruct-grid { grid-template-columns: 1fr; }
+            .stress-grid { grid-template-columns: repeat(2, 1fr); }
+            .iso-visual { height: 400px; }
+            .btn-group { justify-content: center; }
+        }
+        @media (max-width: 768px) {
+            .nav-items { display: none; }
+            .stress-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <header class="spec-header">
-        <span class="version-tag">IDENTITY OPTION 02</span>
-        <h1>Structural Synergy</h1>
-        <p class="concept-meta">CONCEPT: INTERLOCKING INTEGRITY // MOTION FOUNDATION</p>
+    <canvas id="molecular-canvas"></canvas>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo-lockup">
+                    <img src="assets/images/logo-option2-nav.png" alt="DAMmix Logo" class="logo-img" style="height: 60px;">
+                </a>
+                <div class="nav-items">
+                    <a href="#DNA" class="nav-item">Visual DNA</a>
+                    <a href="#Lab" class="nav-item">Stress Lab</a>
+                    <a href="#Market" class="nav-item">Market Fit</a>
+                    <a href="#Applications" class="nav-item">Applications</a>
+                </div>
+                <a href="#" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.9rem;">Client Portal</a>
+            </nav>
+        </div>
     </header>
 
-    <section class="logo-display">
-        <div class="main-logo-card">
-            <img src="assets/images/synergy-full.png" alt="DAMmix Synergy Primary Logo">
-        </div>
-        <div class="logic-content">
-            <span class="label">Design Logic</span>
-            <p>The "Synergy" identity emphasizes <strong>Industrial Connectivity</strong>. The interlocking 'D' and 'M' signify a unified supply chain, while the orbital baseline represents a global foundation of trust.</p>
-            <br>
-            <p>The bold, sans-serif letterforms project authority and modern engineering standards.</p>
-        </div>
-    </section>
-
-    <div class="specs-grid">
-        <div class="spec-box">
-            <span class="label">Color Architecture</span>
-            <div class="swatch-group">
-                <div class="swatch s-blue"></div>
-                <div class="swatch s-orange"></div>
-                <div class="swatch s-dark"></div>
-            </div>
-            <div style="margin-top: 20px; font-family: 'Space Mono'; font-size: 0.8rem;">
-                <p>#1B4876 (Engineering Blue)</p>
-                <p>#E86A26 (Kinetic Orange)</p>
-            </div>
-        </div>
-
-        <div class="spec-box">
-            <span class="label">Core Typography</span>
-            <p class="font-demo">Montserrat Bold</p>
-            <p style="letter-spacing: 5px;">ABCDEFGHIJKLMNOPQRSTUVWXYZ</p>
-            <p style="margin-top: 10px; color: var(--accent-grey);">GEOMETRIC SANS-SERIF</p>
-        </div>
-    </div>
-
-    <section class="variations">
-        <span class="label" style="color: rgba(255,255,255,0.5);">Application Testing</span>
-        <div class="variation-grid">
-            <div class="v-card">
-                <img src="assets/images/synergy-icon.png" alt="Icon Only">
-                <p>Monogram Icon</p>
-            </div>
-            <div class="v-card">
-                <img src="assets/images/synergy-full.png" alt="Reversed">
-                <p>Negative/Reverse</p>
-            </div>
-            <div class="v-card">
-                <div style="height: 150px; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.5rem;">
-                    DAMmix
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content fade-up">
+                    <span class="hero-tag"><span class="catalyst-dot"></span>Identity System 2.0</span>
+                    <h1>THE CATALYST OF<br><span>STABILITY.</span></h1>
+                    <p>
+                        This is not just about building blocks. It’s about the intelligent chemistry that holds them together. 
+                        <strong>DAMmix</strong> is the active ingredient in the world's strongest structures.
+                    </p>
+                    <div class="btn-group">
+                        <a href="#DNA" class="btn btn-primary">Explore The System <i data-feather="arrow-down"></i></a>
+                        <a href="#Lab" class="btn btn-secondary">View Lab Data</a>
+                    </div>
                 </div>
-                <p>Wordmark Only</p>
+                <div class="iso-visual fade-up">
+                    <img src="assets/images/logo-option2-3d.png" alt="DAMmix Isometric Logo" class="iso-img">
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        &copy; 2026 DAMMIX BRANDING DOCUMENTATION // OPTION 2: SYNERGY BUILDER
+    <section id="DNA" class="section-pad logo-science">
+        <div class="container">
+            <span class="hero-tag">Logo Deconstruction</span>
+            <h2>INTELLIGENT GEOMETRY</h2>
+            <p style="max-width: 600px; color: #666; margin-top: 10px;">The new mark is not abstract art. It is an engineering diagram of how DAMmix functions within the concrete matrix.</p>
+
+            <div class="deconstruct-grid">
+                <div class="science-card fade-up">
+                    <div class="science-icon"><i data-feather="box"></i></div>
+                    <h3>The Structural Matrix</h3>
+                    <p style="font-size: 0.9rem; color: #555; margin-top: 15px;">
+                        The dark grey cubes represent the aggregate and cement—the raw body of construction. They are arranged in a strong, interlocking isometric formation.
+                    </p>
+                </div>
+                
+                <div class="science-card fade-up" style="transition-delay: 0.1s;">
+                    <div class="science-icon"><i data-feather="droplet"></i></div>
+                    <h3>The Active Catalyst</h3>
+                    <p style="font-size: 0.9rem; color: #555; margin-top: 15px;">
+                        The central orange line and hexagonal drop represent the <strong>DAMmix admixture</strong>. It penetrates the center of the structure, binding the matrix together.
+                    </p>
+                </div>
+
+                <div class="science-card fade-up" style="transition-delay: 0.2s;">
+                    <div class="science-icon"><i data-feather="shield"></i></div>
+                    <h3>The Protected Core</h3>
+                    <p style="font-size: 0.9rem; color: #555; margin-top: 15px;">
+                        The surrounding circle acts as the containment field—guaranteeing consistent performance and protection against environmental stress.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-pad">
+        <div class="container">
+            <div style="display: flex; gap: 60px; align-items: center;">
+                <div style="flex: 1;" class="fade-up">
+                    <span class="hero-tag">Brand Philosophy</span>
+                    <h2 style="font-size: 3rem; margin-bottom: 30px;">BUILD WITHOUT LIMITS.</h2>
+                    <p style="margin-bottom: 20px; color: #444;">
+                        Our previous logo spoke of "force." This logo speaks of <strong>integration</strong>.
+                    </p>
+                    <p style="color: #666; margin-bottom: 30px;">
+                        Real strength doesn't come from bulk. It comes from the molecular bonds between particles. DAMmix provides the chemical intelligence that turns loose aggregate into monolithic infrastructure.
+                    </p>
+                    <ul style="list-style: none; display: grid; gap: 15px;">
+                        <li style="display: flex; align-items: center;"><i data-feather="check-circle" style="color: var(--dam-orange); margin-right: 10px;"></i> <strong>Molecular Precision</strong> over brute force.</li>
+                        <li style="display: flex; align-items: center;"><i data-feather="check-circle" style="color: var(--dam-orange); margin-right: 10px;"></i> <strong>Validated Chemistry</strong> for critical infrastructure.</li>
+                        <li style="display: flex; align-items: center;"><i data-feather="check-circle" style="color: var(--dam-orange); margin-right: 10px;"></i> <strong>Binding Agent</strong> logic: We hold the project together.</li>
+                    </ul>
+                </div>
+                <div style="flex: 1; background: #222; padding: 60px; border-radius: 20px; color: white; position: relative;" class="fade-up">
+                    <div style="position: absolute; top: -20px; right: -20px; background: var(--dam-orange); padding: 15px; border-radius: 50%;">
+                        <i data-feather="mic" color="white"></i>
+                    </div>
+                    <h4 style="color: #888; margin-bottom: 20px;">TONE OF VOICE SIMULATOR</h4>
+                    <p style="font-family: 'Space Grotesk'; font-size: 1.5rem; line-height: 1.4;">
+                        "We don't just pour concrete. We engineer the hydration process to defy seismic loads."
+                    </p>
+                    <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #888;">
+                        STATUS: Scientific | Confident | Expensive
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Lab" class="section-pad" style="background: #1a1a1a; color: white;">
+        <div class="container">
+            <span class="hero-tag">Visual Stress Test</span>
+            <h2 style="color: white; margin-bottom: 60px;">APPLICATION RESILIENCE</h2>
+            
+            <div class="stress-grid">
+                <div class="stress-item fade-up">
+                    <img src="assets/images/mockup-hardhat.jpg" alt="Hard Hat">
+                    <div class="stress-data">
+                        <div class="score-ring">9.5</div>
+                        <h4>PPE / Safety Gear</h4>
+                        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.8;">
+                            The circle format is perfect for stickers and helmet badges. The orange provides safety visibility.
+                        </p>
+                    </div>
+                </div>
+                <div class="stress-item fade-up" style="transition-delay: 0.1s;">
+                    <img src="assets/images/mockup-app.jpg" alt="App Icon">
+                    <div class="stress-data">
+                        <div class="score-ring">9.8</div>
+                        <h4>Digital Favicon</h4>
+                        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.8;">
+                            The square/circle geometry scales down to 16px perfectly. Better than the linear logo option.
+                        </p>
+                    </div>
+                </div>
+                <div class="stress-item fade-up" style="transition-delay: 0.2s;">
+                    <img src="assets/images/mockup-bag.jpg" alt="Cement Bag">
+                    <div class="stress-data">
+                        <div class="score-ring">8.9</div>
+                        <h4>25kg Packaging</h4>
+                        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.8;">
+                            Solid block printing works well. The "A" detail in the text needs care on low-res flexo printing.
+                        </p>
+                    </div>
+                </div>
+                <div class="stress-item fade-up" style="transition-delay: 0.3s;">
+                    <img src="assets/images/mockup-brochure.jpg" alt="TDS Header">
+                    <div class="stress-data">
+                        <div class="score-ring">9.2</div>
+                        <h4>Technical Docs</h4>
+                        <p style="font-size: 0.8rem; margin-top: 10px; opacity: 0.8;">
+                            Looks like a pharmaceutical or high-tech lab logo. Instills high trust in engineers.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="Market" class="section-pad">
+        <div class="container">
+            <span class="hero-tag">Competitive Landscape</span>
+            <h2>THE "CHEMICAL ARCHITECT" POSITION</h2>
+            
+            <table class="matrix-table fade-up">
+                <thead>
+                    <tr style="text-align: left; color: #888; font-size: 0.8rem;">
+                        <th style="padding: 20px;">BRAND</th>
+                        <th>VISUAL ANCHOR</th>
+                        <th>MARKET VIBE</th>
+                        <th>DAMmix DIFFERENCE</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="matrix-row">
+                        <td><strong>Mapei</strong></td>
+                        <td>Blue Flask / Text</td>
+                        <td>Traditional Adhesives</td>
+                        <td style="color: #666;">We look more structural, less "glue" focused.</td>
+                    </tr>
+                    <tr class="matrix-row">
+                        <td><strong>Sika</strong></td>
+                        <td>Yellow Triangle</td>
+                        <td>Global Utility</td>
+                        <td style="color: #666;">We appear more specialized and modern/tech.</td>
+                    </tr>
+                    <tr class="matrix-row dam-active">
+                        <td>
+                            <strong style="color: var(--dam-carbon-dark);">DAMmix (Option 2)</strong>
+                        </td>
+                        <td>
+                            <strong style="color: var(--dam-orange);">The Isometric Catalyst</strong>
+                        </td>
+                        <td>
+                            <strong style="color: var(--dam-carbon-dark);">Molecular Engineering</strong>
+                        </td>
+                        <td>
+                            <strong style="color: var(--dam-orange);">We visualize the <i>science</i> of strength.</strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer style="background: var(--dam-carbon-dark); color: white; padding: 80px 0;">
+        <div class="container">
+            <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+                <div style="max-width: 300px;">
+                    <img src="assets/images/logo-option2-white.png" style="height: 40px; margin-bottom: 20px; opacity: 0.8;">
+                    <p style="color: #888; font-size: 0.9rem;">
+                        The chemical intelligence behind the world's most resilient structures.
+                    </p>
+                </div>
+                <div>
+                    <h5 style="color: white; margin-bottom: 20px;">IDENTITY ASSETS</h5>
+                    <ul style="list-style: none; color: #888; line-height: 2; font-size: 0.9rem;">
+                        <li><a href="#" style="color: #888; text-decoration: none;">Download Logo Pack (SVG)</a></li>
+                        <li><a href="#" style="color: #888; text-decoration: none;">Brand Guidelines V2.0</a></li>
+                        <li><a href="#" style="color: #888; text-decoration: none;">Typeface Licenses</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 style="color: white; margin-bottom: 20px;">GLOBAL HQ</h5>
+                    <p style="color: #888; font-size: 0.9rem;">
+                        Addis Ababa, Ethiopia<br>
+                        Engineering Hub<br>
+                        <span style="color: var(--dam-orange);">System Status: ACTIVE</span>
+                    </p>
+                </div>
+            </div>
+            <div style="margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 0.8rem; color: #555; display: flex; justify-content: space-between;">
+                <span>© 2026 DAMmix Chemical Engineering.</span>
+                <span>"Build Without Limits"</span>
+            </div>
+        </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // 1. Intersection Observer for Fade-ups
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+            // 2. Feather Icons
+            feather.replace();
+
+            // 3. Molecular Canvas Background (The "Scientific Vibe")
+            const canvas = document.getElementById('molecular-canvas');
+            const ctx = canvas.getContext('2d');
+            let width, height;
+            let molecules = [];
+
+            function resize() {
+                width = canvas.width = window.innerWidth;
+                height = canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            class Molecule {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.size = Math.random() * 3 + 1;
+                    this.color = Math.random() > 0.9 ? '#F36F21' : '#E0E0E0'; // Orange or Grey
+                }
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                }
+            }
+
+            // Init Molecules
+            for (let i = 0; i < 60; i++) molecules.push(new Molecule());
+
+            function animate() {
+                ctx.clearRect(0, 0, width, height);
+                
+                // Draw Connections
+                for (let i = 0; i < molecules.length; i++) {
+                    molecules[i].update();
+                    molecules[i].draw();
+                    
+                    for (let j = i; j < molecules.length; j++) {
+                        const dx = molecules[i].x - molecules[j].x;
+                        const dy = molecules[i].y - molecules[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(45, 45, 45, ${0.1 - distance/1000})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.moveTo(molecules[i].x, molecules[i].y);
+                            ctx.lineTo(molecules[j].x, molecules[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animate);
+            }
+            animate();
+            
+            // 4. Smooth Scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
 </body>
 </html>
